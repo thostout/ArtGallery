@@ -1,0 +1,8 @@
+.switch-list li {
+    display: none; /* All items hidden by default */
+  }
+  
+  .switch-list li.visible {
+    display: list-item; /* Only .visible item will show */
+  }
+  

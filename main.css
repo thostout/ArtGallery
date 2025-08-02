@@ -1,0 +1,98 @@
+header {
+    color: #333; /* Dark text color */
+    text-align: center; /* Center-align text */
+    padding: 20px; /* Add space inside the header */
+    border-bottom: 2px solid #ccc; /* Optional: Add a bottom border */
+}
+
+.Info {
+    text-align: center;
+}
+
+.carousel h2 {
+    text-align: center;
+    border-top: 2px solid #ccc;
+    padding-top: 15px;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow: hidden;
+}
+    
+
+.carousel-track figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.myBtn {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.Progress {
+    padding-top: 10%;
+    display: flex;
+    align-items: baseline;
+}
+
+.ProgressInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 12%;
+}
+
+.ProgressInner h2 {
+    margin-bottom: 1rem;
+}
+
+.Progress img {
+    width: 100%;
+    height: auto;
+}
+
+.favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 12%;
+    padding-top: 75px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.switch-list li {
+    display: none; /* All items hidden by default */
+  }
+  
+.switch-list li.visible {
+    display: list-item; /* Only .visible item will show */
+  }
+
+.switch-list p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4;
+}
+
+.Footer {
+    text-align: center;
+}
