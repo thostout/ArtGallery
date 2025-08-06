@@ -39,6 +39,11 @@ header {
     padding-bottom: 15px;
 }
 
+.carousel-track figure img {
+    min-height: 500px;
+    min-width: 250px;
+}
+
 .myBtn {
     width: fit-content;
     cursor: pointer;
@@ -91,6 +96,11 @@ ul {
     flex-direction: column;
     align-items: center;
     margin: 4;
+}
+
+.switch-list img { 
+    max-width: 500px;
+    max-height: 600px;
 }
 
 .Footer {
