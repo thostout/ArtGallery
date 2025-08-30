@@ -81,6 +81,7 @@ carouselData.forEach(item => {
 
     track.appendChild(figure); // append inside loop
 
+});
 
 // calculate slideWidth and totalSlides AFTER slides are in DOM
 const slideWidth = 300; // width of one slide
