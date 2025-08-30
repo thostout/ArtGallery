@@ -1,54 +1,109 @@
+/* ---------------- HEADER ---------------- */
 header {
-    color: #333; /* Dark text color */
-    text-align: center; /* Center-align text */
-    padding: 20px; /* Add space inside the header */
-    border-bottom: 2px solid #ccc; /* Optional: Add a bottom border */
+    color: #333;                  /* Dark text color */
+    text-align: center;           /* Center-align text */
+    padding: 20px;                /* Space inside the header */
 }
 
+/* ---------------- ABOUT INFO ---------------- */
 .Info {
     text-align: center;
 }
 
+/* ---------------- CAROUSEL TITLE ---------------- */
 .carousel h2 {
     text-align: center;
-    border-top: 2px solid #ccc;
     padding-top: 15px;
 }
 
+/* ---------------- CAROUSEL CONTAINER ---------------- */
 .carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;           /* Needed for buttons positioning */
+    width: 100%;                  /* Fill width of parent */
+    overflow: hidden;             /* Hide slides outside container */
 }
 
+/* ---------------- CAROUSEL TRACK ---------------- */
 .carousel-track {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 20px;
-    overflow: hidden;
+    display: flex;                /* Lay out slides in a row */
+    flex-wrap: nowrap;            /* Prevent wrapping */
+    gap: 20px;                    /* Space between slides */
+    transition: transform 0.3s ease; /* Smooth slide movement */
 }
-    
 
-.carousel-track figure {
+/* ---------------- CAROUSEL ITEM ---------------- */
+.carousel-item {
+    flex: 0 0 auto;               /* Fixed width, no shrinking */
+    width: 300px;                 /* Slide width */
+    display: flex;
+    flex-direction: column;       /* Image above caption */
+    align-items: center;          /* Center content horizontally */
+}
+
+/* Image inside carousel item */
+.carousel-item img {
+    width: 100%;                  /* Fill figure width */
+    height: auto;                 /* Keep aspect ratio */
+    display: block;               /* Remove inline spacing */
+}
+
+/* Caption below image */
+.carousel-item figcaption {
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* ---------------- CAROUSEL BUTTONS ---------------- */
+.prev, .next {
+    cursor: pointer;              /* Pointer on hover */
+    position: absolute;           /* Position relative to container */
+    top: 50%;                     /* Vertically center */
+    transform: translateY(-50%);
+    z-index: 1;                   /* Stay above slides */
+}
+
+.prev {
+    left: 0;                      /* Left side */
+}
+
+.next {
+    right: 0;                     /* Right side */
+}
+
+/* ---------------- FAVORITES / SWITCH LIST ---------------- */
+.favorites {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 4;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    align-items: flex-end;
+    padding-right: 12%;
+    padding-top: 75px;
 }
 
-.carousel-track figure img {
-    min-height: 500px;
-    min-width: 250px;
+.switch-list {
+    list-style: none;             /* Remove bullet points */
+    padding: 0;
+    margin: 0;
 }
 
-.myBtn {
-    width: fit-content;
-    cursor: pointer;
+.switch-list li {
+    display: none;                /* Hide all items initially */
 }
 
+.switch-list li.visible {
+    display: list-item;           /* Only visible item shows */
+}
+
+.switch-list p {
+    text-align: center;
+    margin: 4px 0;
+}
+
+.switch-list img { 
+    max-width: 500px;
+    max-height: 600px;
+}
+
+/* ---------------- PROGRESS SECTION ---------------- */
 .Progress {
     padding-top: 10%;
     display: flex;
@@ -71,46 +126,66 @@ header {
     height: auto;
 }
 
-.favorites {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-right: 12%;
-    padding-top: 75px;
-}
-
-ul {
-    list-style-type: none;
-}
-
-.switch-list li {
-    display: none; /* All items hidden by default */
-  }
-  
-.switch-list li.visible {
-    display: list-item; /* Only .visible item will show */
-  }
-
-.switch-list p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 4;
-}
-
-.switch-list img { 
-    max-width: 500px;
-    max-height: 600px;
-}
-
+/* ---------------- FOOTER ---------------- */
 .Footer {
     text-align: center;
 }
 
-.description {
-    display: none;
+/* ---------------- DESCRIPTION TOGGLE ---------------- */
+.description, .hidden {
+    display: none; /* Hidden initially; toggled by JS */
 }
 
-.hidden {
+/* ---------------- CAROUSEL ITEM ---------------- */
+/* Base carousel item */
+.carousel-item {
+    flex: 0 0 auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+/* Image enlarges when figure has 'enlarged' class */
+.carousel-item.enlarged {
+    width: 300px;
+    margin: 20px;
+}
+
+.carousel-item.enlarged img {
+    transform: scale(1.2); /* Reduced from 1.5 to 1.2 for better visibility */
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+/* Image styling */
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Caption styling */
+.carousel-item figcaption {
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Description hidden by default */
+.carousel-item p {
     display: none;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Description appears when enlarged */
+.carousel-item.enlarged p {
+    display: block;
+    margin-top: 10px;
 }

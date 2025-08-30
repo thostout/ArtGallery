@@ -41,34 +41,67 @@ const carouselData = [
     }
 ];
 
-const carouselTrack = document.querySelector(".carousel-track"); //takes first HTML emement with class .carousell-container and stores it in variable container
+// Select elements
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+const track = document.querySelector('.carousel-track'); // use 'track' everywhere
 
-//loop for every item in carouselData and helos us not repeat code
+//loop for every item in carouselData and helps us not repeat code
 carouselData.forEach(item => {
     const figure = document.createElement("figure"); //creates new figure element not yet on page (like box of decoration not hung up yet)
     figure.classList.add("carousel-item"); //allows us to style with CSS or select with js by adding a class to it
 
     const img = document.createElement("img"); //create image element
-    img.src = item.image; //points image to coret file path
+    img.src = item.image; //points image to correct file path
     img.alt = item.title; //allows image title to also be image alt
 
     const caption = document.createElement("figcaption"); //hold title below image
-    caption.textContent = item.title; //shows where to grab caption text from -- also .textcontent just desplays the text as whats exaxcly writin in the title 
+    caption.textContent = item.title; //shows where to grab caption text from -- also .textcontent just displays the text as what's exactly written in the title 
 
     const desc = document.createElement("p");
     desc.textContent = item.description;
-    desc.classList.add("hidden"); //This CSS class (which you define to display: none) hides this description initially.
 
     //adds img, caption, and desc inside figure tag in order
     figure.appendChild(img);
     figure.appendChild(caption);
     figure.appendChild(desc);
 
-    //when user click on figure (img) runs function
-    figure.addEventListener("click", () => {
-        desc.classList.toggle("hidden"); //adds or removes hidden class weather its ther or not
-    });
+ // Click to enlarge/shrink
+   figure.addEventListener('click', () => {
+    const alreadyEnlarged = figure.classList.contains('enlarged');
 
-    carouselTrack.appendChild(figure);
+    // Shrink all items first
+    document.querySelectorAll('.carousel-item').forEach(f => f.classList.remove('enlarged'));
+
+    // Only enlarge if it wasn't already enlarged
+    if (!alreadyEnlarged) {
+        figure.classList.add('enlarged');
+    }
+});
+
+    track.appendChild(figure); // append inside loop
+
+
+// calculate slideWidth and totalSlides AFTER slides are in DOM
+const slideWidth = 300; // width of one slide
+const totalSlides = track.children.length; // counts how many slides there are
+
+// Setup Variables
+let currentIndex = 0;
+
+// Function to move carousel
+function updateCarousel () {
+    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+}
+
+// Add event listeners for buttons
+nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+});
+
+prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel();
 });
 
